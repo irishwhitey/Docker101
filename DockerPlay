@@ -1,0 +1,41 @@
+Docker
+
+
+1) Docker architecture
+
+https://docs.docker.com/get-started/overview/
+
+2) Docker cli
+		docker images 
+		docker ps
+		docker run -p 9000:80 httpd:2.4.43 (http://localhost:9000)
+		Ctrl C  - 
+		docker images (created = origin date?) - httpd there?
+		docker container ls -a (note website still running)
+		docker container stop xxxxxxx (website dead)
+		docker container start xxxxxxx (website up)
+    detached
+    	docker run -d -p 10000:80 httpd:2.4.43 (http://localhost:10000)
+    	docker exec -it xxxxxxxxx (container) bash
+		in "/usr/local/apache2/htdocs" 
+			cat > fred.html 
+				<Html><Head></Head><body>hey</body></html>
+		http://localhost:10000/fred.html
+	docker ps	
+
+3) Build on pre built containers - Images layers
+	dockerfile docker build . 	
+	tagging (docker build -t myrep/flintstones:barney .)
+	      docker run -p 8000:80 myrep/flintstones:barney
+	add a wilma page (docker build -t myrep/flintstones:barneyAndWilma -f .\DockerfileWilma .)
+		 docker run -p 8800:80 myrep/flintstones:barneyAndWilma
+
+
+4) New Containers
+   from
+   copy   
+   cmd (ONLY ONE)
+
+   docker build -t myrepo/mynode:1.0 -f .\myFreshImage .
+   docker run -p 8900:3000 e9810fb88aaf
+   
